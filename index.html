@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celebrating 1 Week with Ipshita ❤️</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Tone.js for sound effects -->
+    <script src="https://cdn.jsdelivr.net/npm/tone@14.7.58/build/Tone.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fce7f3; /* Light pink background */
+            position: relative;
+        }
+        .emoji-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' opacity='0.2'%3E%3Ctext x='10' y='30' font-size='20'%3E🍯%3C/text%3E%3Ctext x='60' y='80' font-size='20'%3E🎀%3C/text%3E%3C/svg%3E");
+            background-size: 100px 100px;
+            animation: moveBackground 30s linear infinite;
+        }
+        
+        @keyframes moveBackground {
+            from {
+                background-position: 0 0;
+            }
+            to {
+                background-position: 100px 100px;
+            }
+        }
+        
+        .text-shadow-custom {
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        /* Custom modal styles */
+        .modal-overlay {
+            background-color: rgba(0, 0, 0, 0.5);
+            transition: opacity 0.3s ease-in-out;
+        }
+        .modal-content {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        /* Confetti effect styles */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: pink;
+            border-radius: 50%;
+            animation: fall 2s ease-in-out forwards;
+        }
+
+        @keyframes fall {
+            from {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+            to {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* Page selector and carousel styles */
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .carousel-pages {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .carousel-page {
+            flex: 1 0 100%;
+        }
+        .page-selector .dot {
+            transition: all 0.3s ease-in-out;
+        }
+        .page-selector .dot.active {
+            background-color: #db2777; /* Deeper pink for active dot */
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8 flex items-center justify-center min-h-screen relative">
+    <div class="emoji-background"></div>
+
+    <div class="w-full max-w-4xl bg-white rounded-3xl p-6 md:p-10 text-center relative z-10 carousel-container">
+        <div class="carousel-pages" id="carousel-pages">
+            <!-- Page 1: Main Message -->
+            <div id="page-1" class="carousel-page">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-pink-600 mb-2 text-shadow-custom">
+                    Happy 1 Week, Ipshita!
+                </h1>
+                <p class="text-lg md:text-xl text-pink-400 mb-8">
+                    Our first week together, filled with so many beautiful moments.
+                </p>
+                <div class="bg-pink-50 p-6 md:p-8 rounded-2xl shadow-inner mb-8">
+                    <h2 class="text-2xl md:text-3xl font-bold text-pink-500 mb-4">A Message Just For You</h2>
+                    <p class="text-gray-700 text-base md:text-lg leading-relaxed">
+                        From a secret childhood crush to a real-life chapter, every day with you feels like a dream I never want to wake up from. Before you came into my life, I felt a little lost, like a part of my story was missing. But you walked in and brightened up everything. For you, I've gone against what others thought and put in every effort, because finding you was worth it all. My life has been so much brighter since you've been in it. I still remember the day you pranked me by blocking me just to see how much I cared—and look at us now! It's been a week of endless talks, a few little fights that only made us stronger, and a lot of overthinking on my part. You're my beautiful, silly, and wonderful 'Angry Bird,' and you're all mine. Here's to us, and to so many more happy days ahead.
+                    </p>
+                </div>
+                <button id="secret-btn" class="bg-pink-600 hover:bg-pink-700 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-opacity-50">
+                    JUST BETWEEN US (-__-)
+                </button>
+            </div>
+
+            <!-- Page 2: Compliment & Cuter Games -->
+            <div id="page-2" class="carousel-page px-4">
+                <h2 class="text-2xl md:text-3xl font-bold text-pink-500 mb-4">A Little More Fun</h2>
+                <div class="bg-pink-50 p-6 md:p-8 rounded-2xl shadow-inner mb-8">
+                    <div class="mb-8">
+                        <p class="text-lg md:text-xl text-gray-700 mb-4">Feeling lucky?</p>
+                        <button id="compliment-btn" class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105">
+                            Click for a Compliment!
+                        </button>
+                        <p id="compliment-message" class="text-lg md:text-xl text-pink-600 mt-4 font-bold hidden"></p>
+                    </div>
+                    <div>
+                        <p class="text-lg md:text-xl text-gray-700 mb-4">Let's settle a debate.</p>
+                        <div class="flex justify-center space-x-4">
+                            <button id="me-btn" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105">
+                                Me
+                            </button>
+                            <button id="you-btn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105">
+                                You
+                            </button>
+                        </div>
+                        <p id="cuter-message" class="text-lg md:text-xl text-pink-600 mt-4 font-bold hidden"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Page 3: Would You Rather -->
+            <div id="page-3" class="carousel-page px-4">
+                <h2 class="text-2xl md:text-3xl font-bold text-pink-500 mb-4">Would You Rather?</h2>
+                <div class="bg-pink-50 p-6 md:p-8 rounded-2xl shadow-inner mb-8">
+                    <div id="would-you-rather-container">
+                        <p id="wyr-question" class="text-lg md:text-xl text-gray-700 mb-4">Would you rather have a date with momos or golgappe?</p>
+                        <div class="flex justify-center space-x-4">
+                            <button class="wyr-btn bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105">
+                                Momos
+                            </button>
+                            <button class="wyr-btn bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105">
+                                Golgappe
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Selector Dots -->
+        <div id="page-selector" class="flex justify-center mt-6 page-selector">
+            <span class="dot h-3 w-3 mx-1 rounded-full bg-pink-300 cursor-pointer active" data-page="0"></span>
+            <span class="dot h-3 w-3 mx-1 rounded-full bg-pink-300 cursor-pointer" data-page="1"></span>
+            <span class="dot h-3 w-3 mx-1 rounded-full bg-pink-300 cursor-pointer" data-page="2"></span>
+        </div>
+
+        <!-- Footer -->
+        <div class="mt-10 text-gray-500 text-sm">
+            <p>Made with all my love ❤️</p>
+        </div>
+    </div>
+    
+    <!-- Custom Secret Modal -->
+    <div id="secret-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 modal-overlay">
+        <div id="modal-content" class="bg-white rounded-3xl shadow-2xl p-8 max-w-sm w-full transform transition-transform duration-300 scale-95">
+            <!-- Content will be injected here by JavaScript -->
+        </div>
+    </div>
+
+    <!-- JavaScript for secret messages and effects -->
+    <script>
+        // Page navigation logic
+        const carouselPages = document.getElementById('carousel-pages');
+        const dots = document.querySelectorAll('.dot');
+        let currentPageIndex = 0;
+
+        function showPage(index) {
+            carouselPages.style.transform = `translateX(-${index * 100}%)`;
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+            currentPageIndex = index;
+        }
+
+        dots.forEach(dot => {
+            dot.addEventListener('click', (event) => {
+                const pageIndex = parseInt(event.target.dataset.page);
+                showPage(pageIndex);
+            });
+        });
+
+        // Get elements for the secret modal
+        const secretBtn = document.getElementById('secret-btn');
+        const secretModal = document.getElementById('secret-modal');
+        const modalContent = document.getElementById('modal-content');
+        
+        const messages = [
+            "Golgappe wali date ? :( when ?",
+            "1st Hug ? :(",
+            "BHAI YR MUJHE CHHOD KE TOH NAHI JAYEGI NA :(",
+            "Me zyada pareshan toh nhi krta na ?",
+            "And now... the most important question:",
+            "Me zyada 'CHIPKU' hun kya ??"
+        ];
+        let messageIndex = 0;
+
+        // Tone.js setup for sound effects
+        const synth = new Tone.Synth().toDestination();
+
+        // Function to create confetti effect
+        function createConfetti() {
+            const colors = ['#f472b6', '#fdb8c4', '#d8b4fe', '#a78bfa'];
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.left = `${Math.random() * 100}vw`;
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDelay = `${Math.random() * 0.5}s`;
+                document.body.appendChild(confetti);
+            }
+            setTimeout(() => {
+                document.querySelectorAll('.confetti').forEach(c => c.remove());
+            }, 3000);
+        }
+
+        // Function to render the password prompt
+        function showPasswordPrompt() {
+            modalContent.innerHTML = `
+                <h3 class="text-2xl font-bold text-pink-600 mb-4 text-center">Password</h3>
+                <p class="text-md text-gray-800 text-center mb-4">By what name do you call me?</p>
+                <input id="password-input" type="password" class="w-full p-2 border rounded-full mb-4 text-center" placeholder="Enter password...">
+                <button id="submit-btn" class="bg-pink-600 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded-full w-full">
+                    Submit
+                </button>
+            `;
+            document.getElementById('submit-btn').addEventListener('click', () => {
+                // Play sound on button click
+                Tone.start();
+                synth.triggerAttackRelease("C4", "8n");
+                checkPassword();
+            });
+        }
+
+        // Function to check the entered password
+        function checkPassword() {
+            const password = document.getElementById('password-input').value.toLowerCase().trim();
+            const validPasswords = ['nachos', 'rasmalai'];
+            
+            if (validPasswords.includes(password)) {
+                createConfetti();
+                messageIndex = 0;
+                showNextMessage();
+            } else {
+                modalContent.innerHTML = `
+                    <h3 class="text-2xl font-bold text-red-600 mb-4 text-center">Oops!</h3>
+                    <p class="text-md text-gray-800 text-center mb-6">Incorrect name. Try again?</p>
+                    <button id="try-again-btn" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full w-full">
+                        Try Again
+                    </button>
+                `;
+                document.getElementById('try-again-btn').addEventListener('click', () => {
+                    Tone.start();
+                    synth.triggerAttackRelease("C3", "8n");
+                    showPasswordPrompt();
+                });
+            }
+        }
+
+        // Function to show the next message
+        function showNextMessage() {
+            if (messageIndex < messages.length) {
+                // Check if this is the "chipku" question
+                if (messages[messageIndex] === "Me zyada 'CHIPKU' hun kya ??") {
+                    modalContent.innerHTML = `
+                        <h3 class="text-2xl font-bold text-pink-600 mb-4 text-center">Me zyada 'CHIPKU' hun kya ??</h3>
+                        <div class="flex justify-center space-x-4 mt-6 relative">
+                            <button id="chipku-no" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full">No</button>
+                            <button id="chipku-yes" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full transition-all duration-200">Yes</button>
+                        </div>
+                    `;
+                    const yesBtn = document.getElementById('chipku-yes');
+                    yesBtn.addEventListener('mouseover', () => {
+                        const modalRect = modalContent.getBoundingClientRect();
+                        const btnRect = yesBtn.getBoundingClientRect();
+                        const newX = Math.random() * (modalRect.width - btnRect.width);
+                        const newY = Math.random() * (modalRect.height - btnRect.height);
+                        yesBtn.style.position = 'absolute';
+                        yesBtn.style.left = `${newX}px`;
+                        yesBtn.style.top = `${newY}px`;
+                    });
+
+                    document.getElementById('chipku-no').addEventListener('click', () => showChipkuResult());
+                    return;
+                }
+
+                const isLastMessage = messageIndex === messages.length - 1;
+                modalContent.innerHTML = `
+                    <p class="text-xl md:text-2xl text-gray-800 text-center mb-6">${messages[messageIndex]}</p>
+                    <button id="next-btn" class="bg-pink-600 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded-full w-full">
+                        ${isLastMessage ? 'Close' : 'Next'}
+                    </button>
+                `;
+                document.getElementById('next-btn').addEventListener('click', function() {
+                    Tone.start();
+                    synth.triggerAttackRelease("C4", "8n");
+                    if (isLastMessage) {
+                        secretModal.classList.add('hidden');
+                    } else {
+                        messageIndex++;
+                        showNextMessage();
+                    }
+                });
+            }
+        }
+        
+        // Function to show the final message of the "chipku" game
+        function showChipkuResult() {
+            Tone.start();
+            synth.triggerAttackRelease("C4", "8n");
+            modalContent.innerHTML = `
+                <p class="text-xl md:text-2xl text-gray-800 text-center mb-6">ME TOH HUNGA BANDI HAI MERI !</p>
+                <button id="chipku-close" class="bg-pink-600 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded-full w-full">Close</button>
+            `;
+            document.getElementById('chipku-close').addEventListener('click', () => {
+                Tone.start();
+                synth.triggerAttackRelease("C4", "8n");
+                secretModal.classList.add('hidden');
+            });
+        }
+
+        // Initial event listener for the main button
+        secretBtn.addEventListener('click', function() {
+            secretModal.classList.remove('hidden');
+            showPasswordPrompt();
+        });
+        
+        // Close modal if user clicks outside
+        secretModal.addEventListener('click', function(event) {
+            if (event.target === modalContent.parentNode) {
+                secretModal.classList.add('hidden');
+            }
+        });
+
+        // Game 1: Compliment Button
+        const complimentBtn = document.getElementById('compliment-btn');
+        const complimentMessage = document.getElementById('compliment-message');
+        const compliments = [
+            "You are literally the cutest human being I know.",
+            "Talking to you is my favorite part of the day.",
+            "You make my heart do a little happy dance.",
+            "I'm so lucky to have you in my life.",
+            "You have the best smile ever."
+        ];
+
+        complimentBtn.addEventListener('click', () => {
+            const randomCompliment = compliments[Math.floor(Math.random() * compliments.length)];
+            complimentMessage.textContent = randomCompliment;
+            complimentMessage.classList.remove('hidden');
+        });
+
+        // Game 2: Who's Cuter
+        const meBtn = document.getElementById('me-btn');
+        const youBtn = document.getElementById('you-btn');
+        const cuterMessage = document.getElementById('cuter-message');
+
+        const showCuterMessage = () => {
+            cuterMessage.textContent = "It's obviously you! Duh.";
+            cuterMessage.classList.remove('hidden');
+        };
+
+        meBtn.addEventListener('click', showCuterMessage);
+        youBtn.addEventListener('click', showCuterMessage);
+        
+        // Game 3: Would You Rather
+        const wyrQuestions = [
+            { question: "Would you rather have a date with momos or golgappe?", options: ["Momos", "Golgappe"] },
+            { question: "Would you rather get a hug or a high-five?", options: ["A Hug", "A High-Five"] },
+            { question: "Would you rather share your ice cream or share your earphones?", options: ["Ice Cream", "Earphones"] }
+        ];
+        let currentWyrIndex = 0;
+        const wyrContainer = document.getElementById('would-you-rather-container');
+
+        function updateWyrQuestion() {
+            const nextQuestion = wyrQuestions[currentWyrIndex];
+            if (nextQuestion) {
+                wyrContainer.innerHTML = `
+                    <p id="wyr-question" class="text-lg md:text-xl text-gray-700 mb-4">${nextQuestion.question}</p>
+                    <div class="flex justify-center space-x-4">
+                        <button class="wyr-btn bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105">
+                            ${nextQuestion.options[0]}
+                        </button>
+                        <button class="wyr-btn bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105">
+                            ${nextQuestion.options[1]}
+                        </button>
+                    </div>
+                `;
+                document.querySelectorAll('.wyr-btn').forEach(btn => {
+                    btn.addEventListener('click', updateWyrQuestion);
+                });
+                currentWyrIndex++;
+            } else {
+                wyrContainer.innerHTML = `<p class="text-lg md:text-xl text-pink-600 font-bold">That's all for now! 😉</p>`;
+            }
+        }
+        
+        document.querySelectorAll('.wyr-btn').forEach(btn => {
+            btn.addEventListener('click', updateWyrQuestion);
+        });
+        
+    </script>
+</body>
+</html>
